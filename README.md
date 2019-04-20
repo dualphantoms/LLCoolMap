@@ -6,4 +6,4 @@ Main Page</br>
 Slider Input</br>
 <img src="https://i.imgur.com/SMUEADQ.png" align="left" height="250" width="250" >
 Map View</br>
-<img src="https://i.imgur.com/mb5b1ck.png" align="left" height="250" width="250" >
+<img src="https://i.imgur.com/mb5b1ck.png" align="left" height="450" width="250" >
