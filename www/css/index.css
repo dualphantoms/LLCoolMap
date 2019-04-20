@@ -1,0 +1,53 @@
+/*
+<div>Icons made by <a href="https://www.flaticon.com/authors/itim2101" 
+title="itim2101">itim2101</a>
+*/
+
+.coordinates {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    padding:5px 10px;
+    margin: 0;
+    font-size: 11px;
+    line-height: 18px;
+    border-radius: 3px;
+    display: none;
+    }
+
+html{
+background-color: rgb(0,204,179);
+font-family: 'Source Code Pro', monospace;
+}
+
+#formy {
+
+    font-size: 2em;
+
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+.buttons {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+  }
+  
+  .buttons:hover {background-color: #e7e7e7;}
+
