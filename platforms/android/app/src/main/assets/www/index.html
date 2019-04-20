@@ -4,25 +4,21 @@
 <meta charset='utf-8' />
 <title>Display a map</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
-<style>
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
-</style>
+<script type = "text/javascript" src = "js/index.js" ></script>
+<link href='css/index.css' rel='stylesheet' />
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
 </head>
-<body>
+<body class="main">
+    
  
-<div id='map'></div>
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZHVhbHBoYW50b21zIiwiYSI6ImNqdTQ1OXJodDB1Y3ozeXBnZ2dsOHVlamcifQ.lplrxD-umCpz0evrL9tf2w';
-var map = new mapboxgl.Map({
-container: 'map', // container id
-style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-center: [-74.50, 40], // starting position [lng, lat]
-zoom: 9 // starting zoom
-});
-</script>
- 
+<form id="formy" method="GET" action="map.html">
+    Longitude<br>
+    <input type="number" name="long" id="lang" value="0" max=180 min=-180>
+    <br>
+    Latitude<br>
+    <input type="number" name="lat" id="lot" value="0" max=90 min=-90>
+    <br><br>
+    <input type="submit" value="Go!" class="button buttons"/>
+  </form> 
 </body>
 </html>

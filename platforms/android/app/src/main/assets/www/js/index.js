@@ -1,55 +1,48 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
+function load_map(){
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready');
-    },
+  //?long=1&lat=1
+  var coords = window.location.search;
+  var split = coords.indexOf('&');
+  var lango = coords.indexOf('long=');
+  var lot = coords.indexOf('lat=');
+  var lat = coords.substring(lot,coords.length);
+  var long = coords.substring(lango,split);
+  lat = lat.substring(4)
+  long = long.substring(5);
+  
+  if(isNaN(lat) && isNaN(long)){
+    window.location.href = "error.html"
+  }
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
-
-var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+//console.log(lat);
+//console.log(long);
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHVhbHBoYW50b21zIiwiYSI6ImNqdTQ1OXJodDB1Y3ozeXBnZ2dsOHVlamcifQ.lplrxD-umCpz0evrL9tf2w';
 var map = new mapboxgl.Map({
-  container: 'mapp',
-  style: 'mapbox://styles/mapbox/streets-v11'
-});
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+center: [long, lat], // starting position [lng, lat] [-79.38537692798894, 43.61104380344537] -> Toronto
+zoom: 5 // starting zoom
+})
 
+// disable map rotation using right click + drag
+map.dragRotate.disable();
+ 
+// disable map rotation using touch rotation gesture
+map.touchZoomRotate.disableRotation();
 
-app.initialize();
+var coordinates = document.getElementById('coordinates');
+
+//display marker
+var marker = new mapboxgl.Marker({
+  draggable: false
+  })
+  .setLngLat([long, lat])
+  .addTo(map);
+    
+map.on('mousemove', function (e) {
+  var lngLat = marker.getLngLat();
+  coordinates.style.display = 'block';
+  coordinates.innerHTML = 'Longitude: ' + e.lngLat.lng + '<br />Latitude: ' + e.lngLat.lat;
+})
+};
